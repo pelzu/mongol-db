@@ -9,6 +9,7 @@ import { DeletedTaskComponent } from './task-list/deleted-task/deleted-task.comp
 import { InputTaskComponent } from './task-list/input-task/input-task.component';
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
+import {HttpTaskService} from "./shared/http-task.service";
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import {FormsModule} from "@angular/forms";
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [HttpTaskService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

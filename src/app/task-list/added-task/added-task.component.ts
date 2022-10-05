@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {HttpTaskService} from "../../shared/http-task.service";
 
 @Component({
   selector: 'app-added-task',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddedTaskComponent implements OnInit {
 
-  constructor() { }
+  constructor(private http:HttpTaskService) { }
 
   ngOnInit(): void {
   }
 
+
+  getAlItems() {
+    this.http.get().subscribe(items=>{
+      console.log(items.name);
+    }) ;
+  }
 }
