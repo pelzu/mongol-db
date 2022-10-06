@@ -1,6 +1,9 @@
-export interface Documents {
-
-name :String ;
-_id: string;
-
+export interface Root {
+  documents: Document[]
 }
+
+export interface Document {
+  _id: string
+  name: string
+}
+
