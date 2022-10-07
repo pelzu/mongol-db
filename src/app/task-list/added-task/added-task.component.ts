@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {HttpTaskService} from "../../shared/http-task.service";
 import {Document, Root} from "../../model/documents";
+import {TaskService} from "../../shared/task.service";
+import {of} from "rxjs";
+import * as http from "http";
 
 
 @Component({
@@ -9,24 +12,32 @@ import {Document, Root} from "../../model/documents";
   styleUrls: ['./added-task.component.css']
 })
 export class AddedTaskComponent implements OnInit {
-  tasks: Root | undefined ;
-  mati:Array<String>=['Loli','Hentajce'];
-  taskers: Document[] | undefined ;
-  constructor(private http:HttpTaskService) {
+  addedTasks: Document[] | undefined;
 
+
+  constructor(private http: HttpTaskService, private taskService: TaskService) {
 
   }
 
   ngOnInit(): void {
+    this.getTaskFromDB();
+  }
+  getTaskFromDB () {
+    this.http.getAllTasks().subscribe((tasks: Root) => {
+      this.addedTasks = tasks.documents;
+    });
   }
 
 
-  getAlItems() {
-    this.http.getAllTasks().subscribe(items=>{
-      this.tasks=items;
-      this.taskers=this.tasks?.documents;
-      this.taskers?.forEach(task=>{console.log(task.name)})
-      console.log(this.mati);
-    }) ;
+  getAddedTasks() {
+
+  }
+
+  deleteTask() {
+
+  }
+
+  doneTask() {
+
   }
 }

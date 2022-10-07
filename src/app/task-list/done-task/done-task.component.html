@@ -1,1 +1,21 @@
-<p>done-task works!</p>
+<div class="row">
+  <h2>DoneTasks</h2>
+  <ul>
+    <button (click)="getDoneTask()" class="btn btn-warning">Nacinij aby pobrać zadania</button>
+    <ng-container *ngFor="let task of doneTasks">
+      <ng-container *ngIf="task.taskStatus==3">
+        <li>
+          <button (click)="restoreTask()" class="btn btn-danger">Delete</button>
+          <h5>
+
+            <br><a style="color: forestgreen">{{'id: ' + task._id}}</a>
+            <br>{{'NAME: ' + task.name}}
+            <br>{{'STATUS: ' + task.taskStatus}}
+          </h5>
+        </li>
+      </ng-container>
+
+
+    </ng-container>
+  </ul>
+</div>

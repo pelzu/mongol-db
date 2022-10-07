@@ -1,11 +1,22 @@
 <div class="row">
   <h2>TODO LIST</h2>
   <ul>
-    <li>
-    <button class="btn btn-warning" (click)="getAlItems()">Nacinij</button>
+    <button (click)="getAddedTasks()" class="btn btn-warning">Nacinij aby pobrać zadania</button>
+    <ng-container *ngFor="let task of addedTasks">
+      <ng-container *ngIf="task.taskStatus==1">
+        <li>
+          <button (click)="deleteTask()" class="btn btn-danger">Delete</button>
+          <button (click)="doneTask()" class="btn btn-success">Done</button>
+          <h5>
+
+            <br><a style="color: slategrey;font-weight: bold;font-style:normal ">{{'id: ' + task._id}}</a>
+            <br>{{'NAME: ' + task.name}}
+            <br>{{'STATUS: ' + task.taskStatus}}
+          </h5>
+        </li>
+      </ng-container>
 
 
-    </li>
-
+    </ng-container>
   </ul>
 </div>

@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {TaskService} from "../../shared/task.service";
+import {Document, Root} from "../../model/documents";
+import {HttpTaskService} from "../../shared/http-task.service";
 
 @Component({
   selector: 'app-deleted-task',
@@ -6,10 +9,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./deleted-task.component.css']
 })
 export class DeletedTaskComponent implements OnInit {
+  deletedTask:Array<Document>=[] ;
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(private http:HttpTaskService) {
   }
 
+  ngOnInit(): void {
+    this.getDeletedTask();
+  }
+  getDeletedTask () {
+    this.http.getAllTasks().subscribe((tasks: Root) => {
+      this.deletedTask = tasks.documents;
+    });
+  }
+
+
+  forceDeleteTask() {
+
+  }
+
+  restoreTask() {
+
+  }
 }

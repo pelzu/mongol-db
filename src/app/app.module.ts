@@ -10,6 +10,7 @@ import { InputTaskComponent } from './task-list/input-task/input-task.component'
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
 import {HttpTaskService} from "./shared/http-task.service";
+import {TaskService} from "./shared/task.service";
 
 @NgModule({
   declarations: [
@@ -25,7 +26,7 @@ import {HttpTaskService} from "./shared/http-task.service";
     HttpClientModule,
     FormsModule
   ],
-  providers: [HttpTaskService],
+  providers: [HttpTaskService,TaskService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

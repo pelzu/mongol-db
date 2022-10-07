@@ -1,1 +1,22 @@
-<p>deleted-task works!</p>
+<div class="row">
+  <h2>DeletedTasks</h2>
+  <ul>
+    <button (click)="getDeletedTask()" class="btn btn-warning">Nacinij aby pobrać zadania</button>
+    <ng-container *ngFor="let task of deletedTask">
+      <ng-container *ngIf="task.taskStatus==3">
+        <li>
+          <button (click)="forceDeleteTask()" class="btn btn-danger">Delete</button>
+          <button (click)="restoreTask()" class="btn btn-success">Done</button>
+          <h5>
+
+            <br><a style="color: red">{{'id: ' + task._id}}</a>
+            <br>{{'NAME: ' + task.name}}
+            <br>{{'STATUS: ' + task.taskStatus}}
+          </h5>
+        </li>
+      </ng-container>
+
+
+    </ng-container>
+  </ul>
+</div>
