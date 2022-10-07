@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {HttpTaskService} from "../../shared/http-task.service";
 import {Document, Root} from "../../model/documents";
 import {TaskService} from "../../shared/task.service";
@@ -11,13 +11,18 @@ import * as http from "http";
   templateUrl: './added-task.component.html',
   styleUrls: ['./added-task.component.css']
 })
-export class AddedTaskComponent implements OnInit {
+export class AddedTaskComponent implements OnInit,OnChanges {
   addedTasks: Document[] | undefined;
 
 
   constructor(private http: HttpTaskService, private taskService: TaskService) {
 
+
   }
+
+  ngOnChanges(changes: SimpleChanges): void {
+  }
+
 
   ngOnInit(): void {
     this.getTaskFromDB();
@@ -30,7 +35,7 @@ export class AddedTaskComponent implements OnInit {
 
 
   getAddedTasks() {
-
+    this.getTaskFromDB();
   }
 
   deleteTask() {

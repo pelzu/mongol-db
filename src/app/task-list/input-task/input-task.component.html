@@ -1,6 +1,8 @@
 <div class="row">
   <h2>Add your Task!</h2>
-  <input [(ngModel)]="task">
-
-  <button class="btn btn-primary">Add Task</button>
+  <input [(ngModel)]="task._id">
+  <input [(ngModel)]="task.name">
+  <input [(ngModel)]="task.taskStatus">
+  {{response}}
+  <button class="btn btn-primary" (click)="addOneTask()">Add Task</button>
 </div>

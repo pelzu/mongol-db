@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {HttpTaskService} from "../../shared/http-task.service";
+import {Document, Root} from "../../model/documents";
 
 @Component({
   selector: 'app-input-task',
@@ -6,11 +8,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./input-task.component.css']
 })
 export class InputTaskComponent implements OnInit {
-  task: string='';
+  task:Document=new class implements Document {
+    // @ts-ignore
+    _id: string;
+    name: string= 'Nauczyc sie wszystkiego' ;
+    taskStatus: number=1;
+  };
+  response:string='' ;
 
-  constructor() { }
+
+  constructor(private http:HttpTaskService) { }
 
   ngOnInit(): void {
   }
+
+  addOneTask() {
+    this.http.insertOneTask(this.task).subscribe();
+  }
+
 
 }

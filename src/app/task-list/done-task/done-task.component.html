@@ -1,9 +1,9 @@
 <div class="row">
-  <h2>DoneTasks</h2>
+  <h2>Done Tasks</h2>
   <ul>
     <button (click)="getDoneTask()" class="btn btn-warning">Nacinij aby pobrać zadania</button>
     <ng-container *ngFor="let task of doneTasks">
-      <ng-container *ngIf="task.taskStatus==3">
+      <ng-container *ngIf="task.taskStatus==2">
         <li>
           <button (click)="restoreTask()" class="btn btn-danger">Delete</button>
           <h5>
