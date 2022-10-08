@@ -22,7 +22,20 @@ export class DoneTaskComponent implements OnInit {
     });
   }
 
-  restoreTask() {
+  restoreTask(task: Document)  {
+    this.http.moveTaskToAdded(task).subscribe(data => {
+      setTimeout(() => {
+        this.getDoneTask();
+      }, 500)
+    });
 
+  }
+
+  moveToDeleteTask(task: Document) {
+    this.http.moveTaskToDeleted(task).subscribe(data => {
+      setTimeout(() => {
+        this.getDoneTask();
+      }, 500)
+    });
   }
 }

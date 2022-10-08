@@ -2,8 +2,6 @@ import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {HttpTaskService} from "../../shared/http-task.service";
 import {Document, Root} from "../../model/documents";
 import {TaskService} from "../../shared/task.service";
-import {of} from "rxjs";
-import * as http from "http";
 
 
 @Component({
@@ -11,7 +9,7 @@ import * as http from "http";
   templateUrl: './added-task.component.html',
   styleUrls: ['./added-task.component.css']
 })
-export class AddedTaskComponent implements OnInit,OnChanges {
+export class AddedTaskComponent implements OnInit, OnChanges {
   addedTasks: Document[] | undefined;
 
 
@@ -21,16 +19,12 @@ export class AddedTaskComponent implements OnInit,OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
+    this.getTaskFromDB();
   }
 
 
   ngOnInit(): void {
     this.getTaskFromDB();
-  }
-  getTaskFromDB () {
-    this.http.getAllTasks().subscribe((tasks: Root) => {
-      this.addedTasks = tasks.documents;
-    });
   }
 
 
@@ -38,11 +32,26 @@ export class AddedTaskComponent implements OnInit,OnChanges {
     this.getTaskFromDB();
   }
 
-  deleteTask() {
+  moveToDeleteTask(task: Document) {
+    this.http.moveTaskToDeleted(task).subscribe(data => {
+      setTimeout(() => {
+        this.getTaskFromDB();
+      }, 500)
+    });
+
 
   }
+  moveToDoneTask(task: Document) {
+    this.http.moveTaskToDone(task).subscribe(data => {
+      setTimeout(() => {
+        this.getTaskFromDB();
+      }, 500)
+    });
+  }
 
-  doneTask() {
-
+  getTaskFromDB() {
+    this.http.getAllTasks().subscribe((tasks: Root) => {
+      this.addedTasks = tasks.documents;
+    });
   }
 }

@@ -5,8 +5,8 @@
     <ng-container *ngFor="let task of addedTasks">
       <ng-container *ngIf="task.taskStatus==1">
         <li>
-          <button (click)="deleteTask()" class="btn btn-danger">Delete</button>
-          <button (click)="doneTask()" class="btn btn-success">Done</button>
+          <button (click)="moveToDeleteTask(task)" class="btn btn-danger">Delete</button>
+          <button (click)="moveToDoneTask(task)" class="btn btn-success">Done</button>
           <h5>
 
             <br><a style="color: slategrey;font-weight: bold;font-style:normal ">{{'id: ' + task._id}}</a>

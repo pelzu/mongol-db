@@ -11,7 +11,7 @@ export class InputTaskComponent implements OnInit {
   task:Document=new class implements Document {
     // @ts-ignore
     _id: string;
-    name: string= 'Nauczyc sie wszystkiego' ;
+    name: string= 'Dzisiaj bedziemy dodawac i odejmowac' ;
     taskStatus: number=1;
   };
   response:string='' ;
@@ -24,6 +24,7 @@ export class InputTaskComponent implements OnInit {
 
   addOneTask() {
     this.http.insertOneTask(this.task).subscribe();
+
   }
 
 

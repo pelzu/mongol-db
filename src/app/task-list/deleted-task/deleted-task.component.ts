@@ -24,11 +24,20 @@ export class DeletedTaskComponent implements OnInit {
   }
 
 
-  forceDeleteTask() {
-
+  forceDeleteTask(task:Document) {
+    this.http.deleteTask(task).subscribe(data => {
+      setTimeout(() => {
+        this.getDeletedTask();
+      }, 500)
+    });
+  }
+  restoreTask(task:Document) {
+    this.http.moveTaskToAdded(task).subscribe(data => {
+      setTimeout(() => {
+        this.getDeletedTask();
+      }, 500)
+    });
   }
 
-  restoreTask() {
 
-  }
 }

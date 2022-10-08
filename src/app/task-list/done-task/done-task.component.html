@@ -5,7 +5,9 @@
     <ng-container *ngFor="let task of doneTasks">
       <ng-container *ngIf="task.taskStatus==2">
         <li>
-          <button (click)="restoreTask()" class="btn btn-danger">Delete</button>
+          <button (click)="moveToDeleteTask(task)" class="btn btn-danger">Delete</button>
+          <button (click)="restoreTask(task)" class="btn btn-success">Restore</button>
+
           <h5>
 
             <br><a style="color: forestgreen">{{'id: ' + task._id}}</a>

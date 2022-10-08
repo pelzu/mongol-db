@@ -5,8 +5,8 @@
     <ng-container *ngFor="let task of deletedTask">
       <ng-container *ngIf="task.taskStatus==3">
         <li>
-          <button (click)="forceDeleteTask()" class="btn btn-danger">Delete</button>
-          <button (click)="restoreTask()" class="btn btn-success">Done</button>
+          <button (click)="forceDeleteTask(task)" class="btn btn-danger">Delete</button>
+          <button (click)="restoreTask(task)" class="btn btn-success">Restore</button>
           <h5>
 
             <br><a style="color: red">{{'id: ' + task._id}}</a>
