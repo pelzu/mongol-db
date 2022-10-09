@@ -13,6 +13,11 @@
       <div class="col-md">
         <app-deleted-task></app-deleted-task>
       </div>
+      <div class="col-md">
+        <app-test-task  [testTaskList]="httpTaskList"></app-test-task>
+        <button class="btn btn-success" (click)="getTaskFromDB()">Get</button>
+      </div>
+
 
     </div>
   </div>

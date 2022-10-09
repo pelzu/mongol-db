@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewInit, Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {HttpTaskService} from "../shared/http-task.service";
+import {Document, Root} from "../model/documents";
+
 
 @Component({
   selector: 'app-task-list',
@@ -6,10 +9,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./task-list.component.css']
 })
 export class TaskListComponent implements OnInit {
+  httpTaskList:Array<Document> = [] ;
 
-  constructor() { }
+  constructor(private http:HttpTaskService) {
+    this.getTaskFromDB();
+  }
 
   ngOnInit(): void {
+  }
+  getTaskFromDB() {
+    this.http.getAllTasks().subscribe((tasks: Root) => {
+      this.httpTaskList = tasks.documents;
+      console.log(this.httpTaskList)
+    });
   }
 
 }

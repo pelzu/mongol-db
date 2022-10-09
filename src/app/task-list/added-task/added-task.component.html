@@ -5,7 +5,7 @@
     <ng-container *ngFor="let task of addedTasks">
       <ng-container *ngIf="task.taskStatus==1">
         <li>
-          <button (click)="moveToDeleteTask(task)" class="btn btn-danger">Delete</button>
+          <button (click)="moveToDeleteTask(task )" class="btn btn-danger">Delete</button>
           <button (click)="moveToDoneTask(task)" class="btn btn-success">Done</button>
           <h5>
 

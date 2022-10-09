@@ -11,6 +11,9 @@ import {HttpClientModule} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
 import {HttpTaskService} from "./shared/http-task.service";
 import {TaskService} from "./shared/task.service";
+import { AddedTaskItemComponent } from './task-list/added-task/added-task-item/added-task-item.component';
+import { TestTaskComponent } from './task-list/test-task/test-task.component';
+import { TestTaskItemComponent } from './task-list/test-task/test-task-item/test-task-item.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +22,10 @@ import {TaskService} from "./shared/task.service";
     AddedTaskComponent,
     DoneTaskComponent,
     DeletedTaskComponent,
-    InputTaskComponent
+    InputTaskComponent,
+    AddedTaskItemComponent,
+    TestTaskComponent,
+    TestTaskItemComponent
   ],
   imports: [
     BrowserModule,
