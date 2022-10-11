@@ -7,9 +7,7 @@ import {Document, Root} from "../../../model/documents";
   styleUrls: ['./test-task-item.component.css']
 })
 export class TestTaskItemComponent implements OnInit {
-  @Input() testTask : Document | undefined;
-
-
+  @Input() testTask: Document | undefined;
 
   constructor() {
   }
@@ -24,5 +22,9 @@ export class TestTaskItemComponent implements OnInit {
 
   forceDeleteTask() {
 
+  }
+
+  checkStatus(): boolean {
+    return this.testTask?.taskStatus == 4;
   }
 }

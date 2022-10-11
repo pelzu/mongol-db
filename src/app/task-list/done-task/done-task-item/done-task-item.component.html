@@ -1,21 +1,22 @@
-<ng-container *ngIf="checkStatus()">
+<ng-container *ngIf="checkStatus()" >
   <div class="container-sm">
     <ul>
       <div class="list-group-item-primary" style="border-radius: 10px">
-        <ng-container *ngIf="toDoTask!==undefined">
+        <ng-container *ngIf="doneTask!==undefined">
           <div class="row">
             <button (click)="deleteTask()" class="btn btn-danger">Delete</button>
+            <button (click)="restoreTask()" class="btn btn-success">Restore</button>
           </div>
           <h5>
             <ul>
               <li>
-                <a style="color: black">{{'TaskID:' + toDoTask._id}}</a>
+                <a style="color: black">{{'TaskID:' + doneTask._id}}</a>
               </li>
               <li>
-                {{'Name:' + toDoTask.name}}
+                {{'Name:' + doneTask.name}}
               </li>
               <li>
-                {{'Task Status:' + toDoTask.taskStatus}}
+                {{'Task Status:' + doneTask.taskStatus}}
               </li>
 
             </ul>

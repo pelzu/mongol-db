@@ -1,27 +1,29 @@
-<div class="row">
-  <h2>Test Tasks</h2>
-  <ul>
-    <div class="list-group-item-primary"style="border-radius: 10px">
-      <ng-container *ngIf="testTask!==undefined">
-        <div class="row">
-          <button (click)="forceDeleteTask()" class="btn btn-danger">Delete</button>
-          <button (click)="restoreTask()" class="btn btn-success">Restore</button>
-        </div>
-        <h5>
-          <ul>
-            <li>
-              <a style="color: black">{{'TaskID:' + testTask._id}}</a>
-            </li>
-            <li>
-              {{'Name:' + testTask.name}}
-            </li>
-            <li>
-              {{'Task Status:' + testTask.taskStatus}}
-            </li>
+<ng-container *ngIf="checkStatus()" >
+  <div class="container-sm">
+    <ul>
+      <div class="list-group-item-primary" style="border-radius: 10px">
+        <ng-container *ngIf="testTask!==undefined">
+          <div class="row">
+            <button (click)="forceDeleteTask()" class="btn btn-danger">Delete</button>
+            <button (click)="restoreTask()" class="btn btn-success">Restore</button>
+          </div>
+          <h5>
+            <ul>
+              <li>
+                <a style="color: black">{{'TaskID:' + testTask._id}}</a>
+              </li>
+              <li>
+                {{'Name:' + testTask.name}}
+              </li>
+              <li>
+                {{'Task Status:' + testTask.taskStatus}}
+              </li>
 
-          </ul>
-        </h5>
-      </ng-container>
-    </div>
-  </ul>
-</div>
+            </ul>
+          </h5>
+        </ng-container>
+      </div>
+    </ul>
+  </div>
+
+</ng-container>

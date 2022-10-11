@@ -1,24 +1,24 @@
-<div class="container-xxl">
+<div class="container-fluid">
   <div class="row">
     <div class="row">
-      <div class="col col-2">
-        <app-input-task></app-input-task>
+      <div class="col-md">
+        <app-input-task (refreshTaskList)="getTaskFromDB()"></app-input-task>
+        <div class="row">
+          <button (click)="getTaskFromDB()" class="btn btn-success">Get</button>
+        </div>
       </div>
       <div class="col-md">
-        <app-added-task></app-added-task>
+        <app-added-task [addedTasks]="httpTaskList"></app-added-task>
       </div>
       <div class="col-md">
-        <app-done-task></app-done-task>
+        <app-done-task [doneTasks]="httpTaskList"></app-done-task>
       </div>
       <div class="col-md">
-        <app-deleted-task></app-deleted-task>
+        <app-deleted-task [deletedTasks]="httpTaskList"></app-deleted-task>
       </div>
-      <div class="col-md">
-        <app-test-task  [testTaskList]="httpTaskList"></app-test-task>
-        <button class="btn btn-success" (click)="getTaskFromDB()">Get</button>
+      <div class="col-sm">
+        <app-test-task [testTaskList]="httpTaskList"></app-test-task>
       </div>
-
-
     </div>
   </div>
 </div>

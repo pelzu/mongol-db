@@ -1,27 +1,22 @@
-import {
-  AfterContentChecked,
-  AfterViewChecked,
-  AfterViewInit,
-  Component,
-  DoCheck,
-  OnChanges, OnDestroy,
-  OnInit, SimpleChanges
-} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {HttpTaskService} from "../../shared/http-task.service";
 import {Document, Root} from "../../model/documents";
+import * as constants from "constants";
 
 @Component({
   selector: 'app-input-task',
   templateUrl: './input-task.component.html',
   styleUrls: ['./input-task.component.css']
 })
-export class InputTaskComponent implements OnInit,OnChanges,DoCheck,AfterContentChecked,AfterViewChecked,AfterViewInit,AfterContentChecked,OnDestroy {
+export class InputTaskComponent implements OnInit{
   task:Document=new class implements Document {
     // @ts-ignore
     _id: string;
     name: string= 'Dzisiaj bedziemy dodawac i odejmowac' ;
     taskStatus: number=1;
   };
+  @Output() refreshTaskList=new EventEmitter() ;
+
   response:string='' ;
 
 
@@ -33,33 +28,7 @@ export class InputTaskComponent implements OnInit,OnChanges,DoCheck,AfterContent
 
   addOneTask() {
     this.http.insertOneTask(this.task).subscribe();
-
+    this.refreshTaskList.emit();
   }
-
-  ngAfterContentChecked(): void {
-    console.log('ngAfterContentChecked');
-  }
-
-  ngAfterViewChecked(): void {
-    console.log('ngAfterViewChecked');
-  }
-
-  ngAfterViewInit(): void {
-    console.log('ngAfterViewInit');
-  }
-
-  ngDoCheck(): void {
-    console.log('ngDoCheck');
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes);
-    console.log('ngOnChanges');
-  }
-
-  ngOnDestroy(): void {
-    console.log('ngOnDestroy');
-  }
-
 
 }

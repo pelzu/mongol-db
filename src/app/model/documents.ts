@@ -3,8 +3,9 @@ export interface Root {
 }
 
 export interface Document {
-  _id: string
-  name: string
-  taskStatus: number
+  _id: string;
+  name: string;
+  taskStatus: number ;
+
 }
 

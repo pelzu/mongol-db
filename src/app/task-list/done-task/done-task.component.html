@@ -1,23 +1,9 @@
-<div class="row">
-  <h2>Done Tasks</h2>
-  <ul>
-    <button (click)="getDoneTask()" class="btn btn-warning">Nacinij aby pobrać zadania</button>
-    <ng-container *ngFor="let task of doneTasks">
-      <ng-container *ngIf="task.taskStatus==2">
-        <li>
-          <button (click)="moveToDeleteTask(task)" class="btn btn-danger">Delete</button>
-          <button (click)="restoreTask(task)" class="btn btn-success">Restore</button>
+<h2> Done Task List</h2>
 
-          <h5>
+<app-done-task-item
+  *ngFor="let doneTaskEl of doneTasks" [doneTask]="doneTaskEl">
 
-            <br><a style="color: forestgreen">{{'id: ' + task._id}}</a>
-            <br>{{'NAME: ' + task.name}}
-            <br>{{'STATUS: ' + task.taskStatus}}
-          </h5>
-        </li>
-      </ng-container>
+</app-done-task-item>
 
 
-    </ng-container>
-  </ul>
-</div>
+

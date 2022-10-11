@@ -14,6 +14,8 @@ import {TaskService} from "./shared/task.service";
 import { AddedTaskItemComponent } from './task-list/added-task/added-task-item/added-task-item.component';
 import { TestTaskComponent } from './task-list/test-task/test-task.component';
 import { TestTaskItemComponent } from './task-list/test-task/test-task-item/test-task-item.component';
+import { DoneTaskItemComponent } from './task-list/done-task/done-task-item/done-task-item.component';
+import { DeletedTaskItemComponent } from './task-list/deleted-task/deleted-task-item/deleted-task-item.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { TestTaskItemComponent } from './task-list/test-task/test-task-item/test
     InputTaskComponent,
     AddedTaskItemComponent,
     TestTaskComponent,
-    TestTaskItemComponent
+    TestTaskItemComponent,
+    DoneTaskItemComponent,
+    DeletedTaskItemComponent
   ],
   imports: [
     BrowserModule,

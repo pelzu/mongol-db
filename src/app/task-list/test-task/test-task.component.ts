@@ -8,14 +8,11 @@ import {Document, Root} from "../../model/documents";
 })
 export class TestTaskComponent implements OnInit {
   @Input()testTaskList:Array<Document>=[] ;
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
-    this.testTaskList.push(new class implements Document {
-      _id: string='1';
-      name: string='Zmywać';
-      taskStatus: number=5;
-    });
+
 
   }
 
