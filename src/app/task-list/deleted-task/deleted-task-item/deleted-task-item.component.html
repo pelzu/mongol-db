@@ -1,16 +1,16 @@
-<ng-container *ngIf="checkStatus()">
+<ng-container *ngIf="checkStatus(); else noTask">
   <div class="container-sm">
     <ul>
       <div class="list-group-item-primary" style="border-radius: 10px">
-        <ng-container *ngIf="deletedTask!==undefined">
+        <ng-container *ngIf="deletedTask!==undefined" >
           <div class="row">
-            <button (click)="forceDeleteTask()" class="btn btn-danger">Delete</button>
+            <button (click)="forceDeleteTask()" class="btn btn-danger" #button>Delete</button>
             <button (click)="restoreTask()" class="btn btn-success">Restore</button>
           </div>
-          <h5>
+          <h5 [ngClass]="{deleted:deletedTask.taskStatus==3}" [ngStyle]="{backgroundColor: 'grey'}">
             <ul>
-              <li>
-                <a style="color: black">{{'TaskID:' + deletedTask._id}}</a>
+              <li >
+                <a >{{'TaskID:' + deletedTask._id}} </a>
               </li>
               <li>
                 {{'Name:' + deletedTask.name}}
@@ -21,9 +21,15 @@
 
             </ul>
           </h5>
+          <input type="text" class="input-group-text" #inputElement>
         </ng-container>
+
       </div>
     </ul>
   </div>
 
 </ng-container>
+<ng-template #noTask>
+</ng-template>
+
+

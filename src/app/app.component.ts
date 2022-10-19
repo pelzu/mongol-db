@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {HttpTaskService} from "./shared/http-task.service";
+import {HttpTaskService} from "./shared/http/http-task.service";
 import {Document, Root} from "./model/documents";
-import {BehaviorSubject} from "rxjs";
 
 @Component({
   selector: 'app-root',
@@ -11,6 +10,7 @@ import {BehaviorSubject} from "rxjs";
 export class AppComponent implements OnInit{
   root: Root | undefined ;
   taskers: Document[] | undefined=[];
+  value: number=2;
   constructor(private http:HttpTaskService) {
 
   }
@@ -23,4 +23,7 @@ export class AppComponent implements OnInit{
 
 
 
+
 }
+
+

@@ -1,5 +1,5 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {HttpTaskService} from "../../shared/http-task.service";
+import {HttpTaskService} from "../../shared/http/http-task.service";
 import {Document, Root} from "../../model/documents";
 import * as constants from "constants";
 
@@ -23,7 +23,6 @@ export class InputTaskComponent implements OnInit{
   constructor(private http:HttpTaskService) { }
 
   ngOnInit(): void {
-    console.log('ngOnInit');
   }
 
   addOneTask() {

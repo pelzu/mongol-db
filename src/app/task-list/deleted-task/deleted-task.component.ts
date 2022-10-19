@@ -1,7 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {TaskService} from "../../shared/task.service";
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+
 import {Document, Root} from "../../model/documents";
-import {HttpTaskService} from "../../shared/http-task.service";
+
 
 @Component({
   selector: 'app-deleted-task',
@@ -10,6 +10,8 @@ import {HttpTaskService} from "../../shared/http-task.service";
 })
 export class DeletedTaskComponent implements OnInit {
   @Input() deletedTasks:Array<Document>=[] ;
+  @Output() refreshTaskList=new EventEmitter() ;
+
 
   constructor() {
   }
@@ -18,6 +20,7 @@ export class DeletedTaskComponent implements OnInit {
   }
 
 
-
-
+  trigDeletedTask() {
+    this.refreshTaskList.emit();
+  }
 }

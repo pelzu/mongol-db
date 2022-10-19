@@ -1,7 +1,7 @@
 <ng-container *ngIf="checkStatus()" >
-  <div class="container-sm">
+  <div class="container-sm" >
     <ul>
-      <div class="list-group-item-primary" style="border-radius: 10px">
+      <div class="list-group-item-primary" style="border-radius: 10px" appHighlight>
         <ng-container *ngIf="testTask!==undefined">
           <div class="row">
             <button (click)="forceDeleteTask()" class="btn btn-danger">Delete</button>
@@ -15,7 +15,7 @@
               <li>
                 {{'Name:' + testTask.name}}
               </li>
-              <li>
+              <li >
                 {{'Task Status:' + testTask.taskStatus}}
               </li>
 
@@ -25,5 +25,5 @@
       </div>
     </ul>
   </div>
-
 </ng-container>
+

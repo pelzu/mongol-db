@@ -1,16 +1,17 @@
 import {Injectable, OnInit} from '@angular/core';
-import {HttpTaskService} from "./http-task.service";
 import {Document, Root} from "../model/documents";
-import {Observable} from "rxjs";
+import {HttpTaskService} from "./http/http-task.service";
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class TaskService  {
+  constructor() {
 
-  allTaskList:Array<Document>=[] ;
-  constructor(private http :HttpTaskService) {
   }
+
+
 
 
 

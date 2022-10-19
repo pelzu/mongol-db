@@ -9,13 +9,15 @@ import { DeletedTaskComponent } from './task-list/deleted-task/deleted-task.comp
 import { InputTaskComponent } from './task-list/input-task/input-task.component';
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
-import {HttpTaskService} from "./shared/http-task.service";
+import {HttpTaskService} from "./shared/http/http-task.service";
 import {TaskService} from "./shared/task.service";
 import { AddedTaskItemComponent } from './task-list/added-task/added-task-item/added-task-item.component';
 import { TestTaskComponent } from './task-list/test-task/test-task.component';
 import { TestTaskItemComponent } from './task-list/test-task/test-task-item/test-task-item.component';
 import { DoneTaskItemComponent } from './task-list/done-task/done-task-item/done-task-item.component';
 import { DeletedTaskItemComponent } from './task-list/deleted-task/deleted-task-item/deleted-task-item.component';
+import { HighlightDirective } from './directives/highlight.directive';
+import { UnlessDirective } from './directives/unless.directive';
 
 @NgModule({
   declarations: [
@@ -29,12 +31,15 @@ import { DeletedTaskItemComponent } from './task-list/deleted-task/deleted-task-
     TestTaskComponent,
     TestTaskItemComponent,
     DoneTaskItemComponent,
-    DeletedTaskItemComponent
+    DeletedTaskItemComponent,
+    HighlightDirective,
+    UnlessDirective
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+
   ],
   providers: [HttpTaskService,TaskService],
   bootstrap: [AppComponent]

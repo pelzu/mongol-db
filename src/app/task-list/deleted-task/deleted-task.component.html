@@ -1,4 +1,6 @@
 <h2> Deleted Task List</h2>
-<app-deleted-task-item
-  *ngFor="let deletedTaskEl of deletedTasks" [deletedTask]="deletedTaskEl">
-</app-deleted-task-item>
+<ng-container *ngIf="deletedTasks.filter">
+  <app-deleted-task-item
+    (trigDeletedTaskItem)="trigDeletedTask()" *ngFor="let deletedTaskEl of deletedTasks" [deletedTask]="deletedTaskEl">
+  </app-deleted-task-item>
+</ng-container>
