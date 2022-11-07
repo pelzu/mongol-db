@@ -1,4 +1,7 @@
 <h2> TEST Tasks</h2>
 <app-test-task-item
-  *ngFor="let taskEl of testTaskList" [testTask]="taskEl" >
+  *ngFor="let taskEl of this.taskService.httpTaskList" [testTask]="taskEl" >
 </app-test-task-item>
+
+
+<button class="btn btn-primary" (click)="tapToChech()"></button>

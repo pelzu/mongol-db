@@ -1,5 +1,5 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {Document, Root} from "../../model/documents";
+import {Component, OnInit} from '@angular/core';
+import {TaskService} from "../../shared/task.service";
 
 @Component({
   selector: 'app-test-task',
@@ -7,13 +7,18 @@ import {Document, Root} from "../../model/documents";
   styleUrls: ['./test-task.component.css']
 })
 export class TestTaskComponent implements OnInit {
-  @Input()testTaskList:Array<Document>=[] ;
-  constructor() {
+
+
+  constructor(protected taskService: TaskService) {
   }
 
   ngOnInit(): void {
 
 
+  }
+
+  tapToChech() {
+    console.log(this.taskService.httpTaskList);
   }
 
 }

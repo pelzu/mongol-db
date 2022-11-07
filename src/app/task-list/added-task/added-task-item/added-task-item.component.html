@@ -2,20 +2,21 @@
   <div class="container-sm">
     <ul>
       <div class="list-group-item-primary" style="border-radius: 10px">
-        <ng-container *ngIf="toDoTask!==undefined">
+        <ng-container *ngIf="addedTask!==undefined">
           <div class="row">
             <button (click)="deleteTask()" class="btn btn-danger">Delete</button>
+            <button (click)="moveToDone()" class="btn btn-primary">Done</button>
           </div>
           <h5>
             <ul>
               <li>
-                <a style="color: black">{{'TaskID:' + toDoTask._id}}</a>
+                <a style="color: black">{{'TaskID:' + addedTask._id}}</a>
               </li>
               <li>
-                {{'Name:' + toDoTask.name}}
+                {{'Name:' + addedTask.name}}
               </li>
               <li>
-                {{'Task Status:' + toDoTask.taskStatus}}
+                {{'Task Status:' + addedTask.taskStatus}}
               </li>
 
             </ul>

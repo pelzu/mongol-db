@@ -1,5 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Document} from "../../../model/documents";
+import {HttpTaskService} from "../../../shared/http/http-task.service";
+import {TaskService} from "../../../shared/task.service";
 
 @Component({
   selector: 'app-done-task-item',
@@ -10,13 +12,13 @@ export class DoneTaskItemComponent implements OnInit {
   @Input()  doneTask: Document|undefined;
 
 
-  constructor() { }
+  constructor(private taskService:TaskService) { }
 
   ngOnInit(): void {
   }
 
   checkStatus():boolean  {
-    return this.doneTask?.taskStatus==2 ;
+    return this.doneTask?.taskStatus==2;
 
   }
 

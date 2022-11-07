@@ -1,5 +1,5 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {Document, Root} from "../../model/documents";
+import {Component, OnInit} from '@angular/core';
+import {TaskService} from "../../shared/task.service";
 
 
 @Component({
@@ -8,11 +8,14 @@ import {Document, Root} from "../../model/documents";
   styleUrls: ['./done-task.component.css']
 })
 export class DoneTaskComponent implements OnInit {
-  @Input() doneTasks:Array<Document>= [] ;
-  constructor() {
+
+  constructor(protected taskService:TaskService) {
   }
 
   ngOnInit(): void {
 
+
+
   }
+
 }

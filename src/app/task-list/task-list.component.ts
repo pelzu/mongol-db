@@ -14,6 +14,8 @@ export class TaskListComponent implements OnInit {
 
   constructor(private http:HttpTaskService) {
     this.getTaskFromDB();
+
+
   }
 
   ngOnInit(): void {
@@ -21,7 +23,6 @@ export class TaskListComponent implements OnInit {
   getTaskFromDB() {
     this.http.getAllTasks().subscribe((tasks: Root) => {
       this.httpTaskList = tasks.documents;
-      console.log(this.httpTaskList)
     });
   }
 

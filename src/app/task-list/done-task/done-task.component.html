@@ -1,8 +1,7 @@
 <h2> Done Task List</h2>
 
 <app-done-task-item
-  *ngFor="let doneTaskEl of doneTasks" [doneTask]="doneTaskEl">
-
+  *ngFor="let doneTaskEl of this.taskService.httpTaskList" [doneTask]="doneTaskEl">
 </app-done-task-item>
 
 

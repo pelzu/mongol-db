@@ -1,5 +1,6 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Document, Root} from "../../../model/documents";
+import {Component, Input, OnInit} from '@angular/core';
+import {Document} from "../../../model/documents";
+import {TaskService} from "../../../shared/task.service";
 
 @Component({
   selector: 'app-test-task-item',
@@ -9,18 +10,20 @@ import {Document, Root} from "../../../model/documents";
 export class TestTaskItemComponent implements OnInit {
   @Input() testTask: Document | undefined;
 
-  constructor() {
+  constructor(private taskService: TaskService) {
   }
 
   ngOnInit(): void {
 
   }
 
-  restoreTask() {
 
+  restoreTask() {
+    this.taskService.restoreTask(this.testTask).subscribe();
   }
 
   forceDeleteTask() {
+    this.taskService.deleteTask(this.testTask).subscribe();
 
   }
 

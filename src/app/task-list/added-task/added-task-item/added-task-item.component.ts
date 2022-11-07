@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Document} from "../../../model/documents";
+import {HttpTaskService} from "../../../shared/http/http-task.service";
 
 @Component({
   selector: 'app-added-task-item',
@@ -7,19 +8,26 @@ import {Document} from "../../../model/documents";
   styleUrls: ['./added-task-item.component.css']
 })
 export class AddedTaskItemComponent implements OnInit {
-  @Input() toDoTask: Document|undefined;
+  @Input()  addedTask: Document|undefined;
 
-  constructor() { }
+
+  constructor(private http:HttpTaskService) { }
 
   ngOnInit(): void {
   }
 
-  checkStatus() :boolean{
-    return this.toDoTask?.taskStatus==1;
+  checkStatus():boolean  {
+    return this.addedTask?.taskStatus==1 ;
 
   }
 
-  deleteTask() {
+  moveToDone() {
+    this.http.moveTaskToDone(this.addedTask).subscribe();
+
+  }
+
+  deleteTask(){
+    this.http.moveTaskToDeleted(this.addedTask).subscribe();
 
   }
 }

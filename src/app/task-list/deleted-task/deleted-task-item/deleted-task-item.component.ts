@@ -12,9 +12,9 @@ export class DeletedTaskItemComponent implements OnInit {
   @Input()deletedTask: Document|undefined;
   @Output() trigDeletedTaskItem=new EventEmitter() ;
   @ViewChild('inputElement') inputElementRef:ElementRef|undefined;
-  @ViewChild('button') button:ElementRef|undefined;
-
   constructor(private http:HttpTaskService) { }
+
+  @ViewChild('button') button:ElementRef|undefined;
 
   ngOnInit(): void {
   }
@@ -30,7 +30,9 @@ return this.deletedTask?.taskStatus==3 ;
   }
 
   restoreTask() {
-    console.log(this.inputElementRef?.nativeElement.value);
+    this.http.moveTaskToAdded(this.deletedTask).subscribe();
+    this.trigDeletedTaskItem.emit();
+
   }
 
 
