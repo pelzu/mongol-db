@@ -1,19 +1,12 @@
-function requireHTTPS(req, res, next) {
-  // The 'x-forwarded-proto' check is for Heroku
-  if (!req.secure && req.get('x-forwarded-proto') !== 'https') {
-    return res.redirect('https://' + req.get('host') + req.url);
-  }
-  next();
-}
+let express = require('express');
 
-const express = require('express');
-const app = express();
+let app = express();
 
-app.use(requireHTTPS);
-app.use(express.static('./dist/wamu-list-manager'));
+app.use(express.static(__dirname + '/dist/mongo-db'));
 
-app.get('/*', (req, res) =>
-  res.sendFile('index.html', {root: 'dist/wamu-list-manager/'}),
-);
+app.get('/*', (req, resp) => {
+  resp.sendFile(__dirname + '/dist/mongo-db/index.html');
+});
 
-app.listen(process.env.PORT || 8080);
+app.listen(process.env.PORT || 8080)
+
