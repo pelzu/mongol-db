@@ -1,6 +1,7 @@
-import { Component, OnInit,} from '@angular/core';
+import {Component, OnChanges, OnInit, SimpleChanges,} from '@angular/core';
 import {HttpTaskService} from "../shared/http/http-task.service";
 import {Document, Root} from "../model/documents";
+import {delay} from "rxjs";
 
 
 @Component({
@@ -17,6 +18,8 @@ export class TaskListComponent implements OnInit {
 
 
   }
+
+
 
   ngOnInit(): void {
   }

@@ -1,6 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Document} from "../../../model/documents";
-import {HttpTaskService} from "../../../shared/http/http-task.service";
 import {TaskService} from "../../../shared/task.service";
 
 @Component({
@@ -9,24 +8,30 @@ import {TaskService} from "../../../shared/task.service";
   styleUrls: ['./done-task-item.component.css']
 })
 export class DoneTaskItemComponent implements OnInit {
-  @Input()  doneTask: Document|undefined;
+  @Input() doneTask: Document | undefined;
 
 
-  constructor(private taskService:TaskService) { }
+  constructor(private taskService: TaskService) {
+  }
 
   ngOnInit(): void {
   }
 
-  checkStatus():boolean  {
-    return this.doneTask?.taskStatus==2;
+  checkStatus(): boolean {
+    return this.doneTask?.taskStatus == 2;
 
   }
 
   restoreTask() {
+    this.taskService.restoreTask(this.doneTask).subscribe();
+    this.taskService.refreshTasks() ;
 
   }
 
-  deleteTask(){
+  deleteTask() {
+    this.taskService.deleteTask(this.doneTask).subscribe();
+    this.taskService.refreshTasks() ;
+
 
   }
 }

@@ -1,6 +1,6 @@
 import {Injectable, OnInit} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import { Observable} from "rxjs";
+import {delay, Observable} from "rxjs";
 import {Document, Root} from "../../model/documents";
 
 @Injectable({

@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 import {Document, Root} from "../../model/documents";
+import {TaskService} from "../../shared/task.service";
 
 
 @Component({
@@ -9,18 +10,16 @@ import {Document, Root} from "../../model/documents";
   styleUrls: ['./deleted-task.component.css']
 })
 export class DeletedTaskComponent implements OnInit {
-  @Input() deletedTasks:Array<Document>=[] ;
-  @Output() refreshTaskList=new EventEmitter() ;
 
 
-  constructor() {
+
+
+  constructor(protected taskService:TaskService) {
   }
 
   ngOnInit(): void {
   }
 
 
-  trigDeletedTask() {
-    this.refreshTaskList.emit();
-  }
+
 }

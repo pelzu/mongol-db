@@ -1,7 +1,6 @@
-import {Component, Input,OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Document} from "../../model/documents";
 import {TaskService} from "../../shared/task.service";
-import {HttpTaskService} from "../../shared/http/http-task.service";
 
 
 @Component({
@@ -11,13 +10,11 @@ import {HttpTaskService} from "../../shared/http/http-task.service";
 })
 export class AddedTaskComponent implements OnInit {
 
-  @Input() addedTasks: Array<Document> = [];
 
-
-  constructor(private http:HttpTaskService) {
+  constructor(protected taskService: TaskService) {
   }
-  ngOnInit(): void {
 
+  ngOnInit(): void {
 
 
   }

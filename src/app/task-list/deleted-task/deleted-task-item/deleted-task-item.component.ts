@@ -1,6 +1,7 @@
 import {Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {Document} from "../../../model/documents";
 import {HttpTaskService} from "../../../shared/http/http-task.service";
+import {TaskService} from "../../../shared/task.service";
 
 
 @Component({
@@ -10,11 +11,10 @@ import {HttpTaskService} from "../../../shared/http/http-task.service";
 })
 export class DeletedTaskItemComponent implements OnInit {
   @Input()deletedTask: Document|undefined;
-  @Output() trigDeletedTaskItem=new EventEmitter() ;
-  @ViewChild('inputElement') inputElementRef:ElementRef|undefined;
-  constructor(private http:HttpTaskService) { }
 
-  @ViewChild('button') button:ElementRef|undefined;
+  constructor(private taskService:TaskService) {
+
+  }
 
   ngOnInit(): void {
   }
@@ -25,13 +25,16 @@ return this.deletedTask?.taskStatus==3 ;
   }
 
   forceDeleteTask() {
-    this.http.deleteTask(this.deletedTask).subscribe();
-    this.trigDeletedTaskItem.emit();
+    this.taskService.forceDeleteTask(this.deletedTask);
+    this.taskService.refreshTasks() ;
+
   }
 
   restoreTask() {
-    this.http.moveTaskToAdded(this.deletedTask).subscribe();
-    this.trigDeletedTaskItem.emit();
+    this.taskService.restoreTask(this.deletedTask).subscribe();
+    this.taskService.refreshTasks() ;
+
+
 
   }
 

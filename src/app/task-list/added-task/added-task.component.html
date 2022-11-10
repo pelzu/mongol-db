@@ -1,5 +1,5 @@
 <h2> TODO Task List</h2>
 <app-added-task-item
-  *ngFor="let toDoTaskEl of addedTasks" [addedTask]="toDoTaskEl">
+  *ngFor="let toDoTaskEl of this.taskService.httpTaskList" [addedTask]="toDoTaskEl">
 
 </app-added-task-item>

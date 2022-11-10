@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {TaskService} from "../../shared/task.service";
 
 @Component({
@@ -6,7 +6,8 @@ import {TaskService} from "../../shared/task.service";
   templateUrl: './test-task.component.html',
   styleUrls: ['./test-task.component.css']
 })
-export class TestTaskComponent implements OnInit {
+export class TestTaskComponent implements OnInit{
+
 
 
   constructor(protected taskService: TaskService) {
@@ -14,11 +15,7 @@ export class TestTaskComponent implements OnInit {
 
   ngOnInit(): void {
 
-
   }
 
-  tapToChech() {
-    console.log(this.taskService.httpTaskList);
-  }
 
 }

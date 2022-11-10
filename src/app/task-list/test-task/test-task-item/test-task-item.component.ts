@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {Document} from "../../../model/documents";
 import {TaskService} from "../../../shared/task.service";
 
@@ -12,6 +12,8 @@ export class TestTaskItemComponent implements OnInit {
 
   constructor(private taskService: TaskService) {
   }
+
+
 
   ngOnInit(): void {
 

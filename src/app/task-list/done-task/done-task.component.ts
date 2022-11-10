@@ -11,10 +11,7 @@ export class DoneTaskComponent implements OnInit {
 
   constructor(protected taskService:TaskService) {
   }
-
   ngOnInit(): void {
-
-
 
   }
 
