@@ -23,12 +23,12 @@ export class AddedTaskItemComponent implements OnInit {
   }
 
   moveToDone() {
-  this.taskService.doneTask(this.addedTask).subscribe();
+  this.taskService.doneTask(this.addedTask);
 
   }
 
   deleteTask(){
-    this.taskService.deleteTask(this.addedTask).subscribe();
+    this.taskService.deleteTask(this.addedTask);
 
 
   }

@@ -21,11 +21,11 @@ export class TestTaskItemComponent implements OnInit {
 
 
   restoreTask() {
-    this.taskService.restoreTask(this.testTask).subscribe();
+    this.taskService.restoreTask(this.testTask);
   }
 
   forceDeleteTask() {
-    this.taskService.deleteTask(this.testTask).subscribe();
+    this.taskService.deleteTask(this.testTask);
 
   }
 

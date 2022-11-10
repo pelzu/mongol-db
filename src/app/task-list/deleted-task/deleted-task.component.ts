@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 import {Document, Root} from "../../model/documents";
 import {TaskService} from "../../shared/task.service";
+import {delay, of, tap} from "rxjs";
 
 
 @Component({
@@ -18,6 +19,7 @@ export class DeletedTaskComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
   }
 
 

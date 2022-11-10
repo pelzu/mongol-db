@@ -1,7 +1,7 @@
 import {Injectable, Input, OnInit} from '@angular/core';
 import {Document, Root} from "../model/documents";
 import {HttpTaskService} from "./http/http-task.service";
-import {delay, Observable} from "rxjs";
+import {Observable} from "rxjs";
 
 
 @Injectable({
@@ -18,40 +18,46 @@ export class TaskService implements OnInit {
 
 
   ngOnInit(): void {
+
+
   }
 
   refreshTasks(): Array<Document> {
-    this.taskHttp.getAllTasks().subscribe((tasks: Root) => {
-      this.httpTaskList = tasks.documents;
-    });
+    setTimeout(() =>
+      this.taskHttp.getAllTasks().subscribe(
+        (tasks: Root) => {
+          this.httpTaskList = tasks.documents;
+        }), 500);
     console.log(this.httpTaskList);
     return this.httpTaskList;
   }
 
-  doneTask(task: Document | undefined): Observable<any> {
-
-
-    return this.taskHttp.moveTaskToDone(task);
-  }
-
-  restoreTask(task: Document | undefined): Observable<any> {
-
-    return this.taskHttp.moveTaskToAdded(task);
-
+  doneTask(task: Document | undefined){
+    this.taskHttp.moveTaskToDone(task).subscribe();
+    this.refreshTasks();
 
   }
 
-  deleteTask(task: Document | undefined): Observable<any> {
+  restoreTask(task: Document | undefined) {
+    this.taskHttp.moveTaskToAdded(task).subscribe();
+    this.refreshTasks();
+  }
 
-    return this.taskHttp.moveTaskToDeleted(task);
-
-
+  deleteTask(task: Document | undefined) {
+    this.taskHttp.moveTaskToDeleted(task).subscribe();
+    this.refreshTasks();
   }
 
   forceDeleteTask(task: Document | undefined) {
 
     this.taskHttp.deleteTask(task).subscribe();
+    this.refreshTasks();
 
+  }
+  addTask(task: Document | undefined) {
+
+    this.taskHttp.insertOneTask(task).subscribe();
+    this.refreshTasks();
 
   }
 

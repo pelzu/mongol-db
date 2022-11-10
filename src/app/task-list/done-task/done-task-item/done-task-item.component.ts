@@ -23,15 +23,10 @@ export class DoneTaskItemComponent implements OnInit {
   }
 
   restoreTask() {
-    this.taskService.restoreTask(this.doneTask).subscribe();
-    this.taskService.refreshTasks() ;
-
+    this.taskService.restoreTask(this.doneTask);
   }
 
   deleteTask() {
-    this.taskService.deleteTask(this.doneTask).subscribe();
-    this.taskService.refreshTasks() ;
-
-
+    this.taskService.deleteTask(this.doneTask);
   }
 }
