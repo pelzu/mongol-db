@@ -1,8 +1,26 @@
-<div class="row">
-  <h2>Add your Task!</h2>
-  <input [(ngModel)]="task._id">
-  <input [(ngModel)]="task.name">
-  <input [(ngModel)]="task.taskStatus">
-  {{response}}
-  <button class="btn btn-primary" (click)="addOneTask()">Add Task</button>
+<div class="card-container">
+  <div class="float">
+    <a class="card" rel="noopener" target="_blank">
+
+      <table>
+        <tr>
+          <td class="row">
+            <h2>Add your Task!</h2>
+            <input [(ngModel)]="task._id">
+            <input [(ngModel)]="task.name">
+            <input [(ngModel)]="task.taskStatus">
+          </td>
+          <td>
+
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <button (click)="addOneTask()" class="btn btn-primary">Add Task</button>
+          </td>
+        </tr>
+
+      </table>
+    </a>
+  </div>
 </div>
