@@ -1,19 +1,28 @@
-
 <ng-container *ngIf="checkStatus()">
   <ng-container *ngIf="addedTask!==undefined">
     <div class="card-container">
-      <div class="float">
-        <a class="card card-todo" rel="noopener" target="_blank">
+      <div class="float ">
+        <a class="card" rel="noopener" target="_blank">
 
           <table class="tab-content">
             <tr>
-              <td class="tabMinWidth">
-                {{addedTask.name}}
-                {{addedTask.taskStatus}}
+
+              <td class="tabMinWidth text-secondary">
+                <ng-container *ngIf="editOrNot; then thenBlock else elseBlock"></ng-container>
+                <ng-template #thenBlock>
+                  {{addedTask.name}}
+                  {{addedTask.taskStatus}}
+                </ng-template>
+                <ng-template #elseBlock>
+                  <input class="input-group-text" (keydown.enter)="this.addedTask.name=this.tempTaskName;modifyTask()"[(ngModel)]="tempTaskName ">
+
+                </ng-template>
+
               </td>
+
               <td>
-                <button (click)="moveToDone()" class="btn btn-success"  style="width: 120px">
-                  Done
+                <button (click)="moveToDone()" class="btn btn-success" style="width: 120px">
+                  Restore
                   <svg fill="currentColor" height="24" viewBox="0 0 24 24" width="24"
                        xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -30,9 +39,32 @@
               </td>
             </tr>
           </table>
+          <div class="btn btn-group">
+            <button class="btn btn-info"  (click)="replaceButton()" *ngIf="editOrNot" >Modify
+              <svg class="material-icons" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+              </svg>
+            </button>
+            <ng-container *ngIf="!editOrNot" >
+              <button class="btn btn-info"  (click)="this.addedTask.name=this.tempTaskName;modifyTask()" >Save
+                <svg class="material-icons" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+                </svg>
+              </button>
+              <button class="btn btn-warning"  (click)="replaceButton()">DiscardChanges
+                <svg class="material-icons" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+                </svg>
+              </button>
+              <button class="btn btn-danger" (click)="tempTaskName=''" >Clear input
+                <svg class="material-icons" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+                </svg>
+              </button>
+            </ng-container>
+          </div>
         </a>
       </div>
     </div>
   </ng-container>
 </ng-container>
-

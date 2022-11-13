@@ -18,7 +18,8 @@ export class HttpTaskService implements OnInit{
   readonly header:HttpHeaders=new HttpHeaders({'content-type':'application/json','Authorization':'Basic TWF0OkpnIWdGVjVkLXpLRXdfbg=='});
   bodyInsert:{ database: string; document: { name: string|undefined; taskStatus: string|undefined }; collection: string; dataSource: string }={"dataSource":"Cluster0", "database":"Simple", "collection":"SimpleTask","document":{"name":"Nauczyć sie wszystkiego","taskStatus":"1"}};
   bodyDelete:{ database: string; filter: { _id:{$oid:string|undefined}}; collection: string; dataSource: string }={"dataSource":"Cluster0", "database":"Simple", "collection":"SimpleTask","filter":{"_id":{"$oid":""}}};
-  bodyUpdate:{ database: string; filter: { _id:{$oid:string|undefined}}; update: {$set:{taskStatus:string|undefined} }; collection: string; dataSource: string }={"dataSource":"Cluster0", "database":"Simple", "collection":"SimpleTask","filter":{"_id":{"$oid":""}},"update":{"$set":{"taskStatus":""}}};
+  bodyStatusUpdate:{ database: string; filter: { _id:{$oid:string|undefined}}; update: {$set:{taskStatus:string|undefined} }; collection: string; dataSource: string }={"dataSource":"Cluster0", "database":"Simple", "collection":"SimpleTask","filter":{"_id":{"$oid":""}},"update":{"$set":{"taskStatus":""}}};
+  bodyNameUpdate:{ database: string; filter: { _id:{$oid:string|undefined}}; update: {$set:{name:string|undefined} }; collection: string; dataSource: string }={"dataSource":"Cluster0", "database":"Simple", "collection":"SimpleTask","filter":{"_id":{"$oid":""}},"update":{"$set":{"name":""}}};
 
   readonly addedTaskStatus:number=1 ;
   readonly doneTaskStatus:number=2 ;
@@ -49,20 +50,26 @@ export class HttpTaskService implements OnInit{
     return  this.httpClient.post(this.DELETE_ONE_URL,this.bodyDelete,{headers:this.header}) ;
   }
   moveTaskToDeleted (task: Document | undefined) :Observable<any>{
-    this.bodyUpdate.filter._id.$oid=task?._id.toString();
-    this.bodyUpdate.update.$set.taskStatus=this.deletedTaskStatus.toString();
-    return  this.httpClient.post(this.UPDATE_ONE_URL,this.bodyUpdate,{headers:this.header}) ;
+    this.bodyStatusUpdate.filter._id.$oid=task?._id.toString();
+    this.bodyStatusUpdate.update.$set.taskStatus=this.deletedTaskStatus.toString();
+    return  this.httpClient.post(this.UPDATE_ONE_URL,this.bodyStatusUpdate,{headers:this.header}) ;
   }
   moveTaskToDone (task: Document | undefined) :Observable<any>{
-    this.bodyUpdate.filter._id.$oid=task?._id.toString();
-    this.bodyUpdate.update.$set.taskStatus=this.doneTaskStatus.toString();
-    return  this.httpClient.post(this.UPDATE_ONE_URL,this.bodyUpdate,{headers:this.header}) ;
+    this.bodyStatusUpdate.filter._id.$oid=task?._id.toString();
+    this.bodyStatusUpdate.update.$set.taskStatus=this.doneTaskStatus.toString();
+    return  this.httpClient.post(this.UPDATE_ONE_URL,this.bodyStatusUpdate,{headers:this.header}) ;
   }
   moveTaskToAdded (task: Document | undefined) :Observable<any>{
-    this.bodyUpdate.filter._id.$oid=task?._id.toString();
-    this.bodyUpdate.update.$set.taskStatus=this.addedTaskStatus.toString();
-    return  this.httpClient.post(this.UPDATE_ONE_URL,this.bodyUpdate,{headers:this.header}) ;
+    this.bodyStatusUpdate.filter._id.$oid=task?._id.toString();
+    this.bodyStatusUpdate.update.$set.taskStatus=this.addedTaskStatus.toString();
+    return  this.httpClient.post(this.UPDATE_ONE_URL,this.bodyStatusUpdate,{headers:this.header}) ;
   }
+  updateTask (task: Document | undefined) :Observable<any>{
+    this.bodyNameUpdate.filter._id.$oid=task?._id.toString();
+    this.bodyNameUpdate.update.$set.name=task?.name?.toString();
+    return  this.httpClient.post(this.UPDATE_ONE_URL,this.bodyNameUpdate,{headers:this.header}) ;
+  }
+
 
 
 

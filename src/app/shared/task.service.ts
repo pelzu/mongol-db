@@ -35,7 +35,6 @@ export class TaskService implements OnInit {
   doneTask(task: Document | undefined){
     this.taskHttp.moveTaskToDone(task).subscribe();
     this.refreshTasks();
-
   }
 
   restoreTask(task: Document | undefined) {
@@ -49,16 +48,17 @@ export class TaskService implements OnInit {
   }
 
   forceDeleteTask(task: Document | undefined) {
-
     this.taskHttp.deleteTask(task).subscribe();
     this.refreshTasks();
-
   }
   addTask(task: Document | undefined) {
-
     this.taskHttp.insertOneTask(task).subscribe();
     this.refreshTasks();
-
   }
+    updateTask(task: Document | undefined) {
+    this.taskHttp.updateTask(task).subscribe();
+    this.refreshTasks();
+  }
+
 
 }

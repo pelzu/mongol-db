@@ -19,10 +19,7 @@ export class TaskListComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  getTaskFromDB() {
-    this.taskService.refreshTasks();
 
-  }
 
 
 }

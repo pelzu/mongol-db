@@ -10,11 +10,15 @@ import {TaskService} from "../../../shared/task.service";
 })
 export class AddedTaskItemComponent implements OnInit {
   @Input()  addedTask: Document|undefined;
+  tempTaskName : string  ='';
+  editOrNot: boolean=true;
 
 
   constructor(private taskService:TaskService) { }
 
   ngOnInit(): void {
+    // @ts-ignore
+    this.tempTaskName=this.testTask?.name.toString();
   }
 
   checkStatus():boolean  {
@@ -31,5 +35,16 @@ export class AddedTaskItemComponent implements OnInit {
     this.taskService.deleteTask(this.addedTask);
 
 
+  }
+  modifyTask() {
+
+    this.taskService.updateTask(this.addedTask);
+
+  }
+
+  replaceButton() {
+
+    this.editOrNot=!this.editOrNot ;
+    this.tempTaskName=<string>this.addedTask?.name;
   }
 }
