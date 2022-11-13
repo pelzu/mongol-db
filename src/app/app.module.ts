@@ -18,6 +18,7 @@ import { DoneTaskItemComponent } from './task-list/done-task/done-task-item/done
 import { DeletedTaskItemComponent } from './task-list/deleted-task/deleted-task-item/deleted-task-item.component';
 import { HighlightDirective } from './directives/highlight.directive';
 import { UnlessDirective } from './directives/unless.directive';
+import { ToolbarComponent } from './toolbar/toolbar.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { UnlessDirective } from './directives/unless.directive';
     DoneTaskItemComponent,
     DeletedTaskItemComponent,
     HighlightDirective,
-    UnlessDirective
+    UnlessDirective,
+    ToolbarComponent,
   ],
   imports: [
     BrowserModule,
