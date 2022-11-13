@@ -1,7 +1,4 @@
-import {Component, OnChanges, OnInit, SimpleChanges,} from '@angular/core';
-import {HttpTaskService} from "../shared/http/http-task.service";
-import {Document, Root} from "../model/documents";
-import {delay} from "rxjs";
+import {Component, OnInit,} from '@angular/core';
 import {TaskService} from "../shared/task.service";
 
 
@@ -13,19 +10,17 @@ import {TaskService} from "../shared/task.service";
 export class TaskListComponent implements OnInit {
 
 
-
-  constructor(protected taskService:TaskService) {
-
+  constructor(protected taskService: TaskService) {
 
 
   }
-
 
 
   ngOnInit(): void {
   }
+
   getTaskFromDB() {
-    this.taskService.refreshTasks() ;
+    this.taskService.refreshTasks();
 
   }
 
